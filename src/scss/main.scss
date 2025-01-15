@@ -9,9 +9,22 @@
 
 li {
     list-style: none;
+    margin-bottom: 60px;
+    width: fit-content;
+    
+}
+
+ul {
+    width: fit-content;
 }
 
 .animeSection {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.selected {
+    border: 3px solid lightgreen;
+    color: lightgreen;
 }
