@@ -5,6 +5,7 @@ const animeUL = document.querySelector('.js-animeList');
 const favAnimeUL = document.querySelector('.js-favAnimeList');
 const sectionAnimes = document.querySelector('.js-sectionAnimes');
 const resetFavBtn = document.querySelector('.js-resetFavBtn');
+const resetBtn = document.querySelector('.js-resetBtn');
 
 let animes = [];
 let favAnimes = [];
@@ -190,18 +191,33 @@ function handleClick(ev) {
 
 searchBtn.addEventListener('click', handleClick);
 
-
-function handleResetFav () {
-    console.log(favAnimes)
+//Escuchamos evento sobre el botón resetFav y creamos función para que lleve el array a 0, se guarde en LS, llame a las dos funciones render y quite las clases que no queremos
+function handleResetFav (ev) {
+    ev.preventDefault();
     favAnimes = [];
     sectionAnimes.classList.remove('animeSection');
-    localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
     renderFavAnime();
     renderAnimeInfo();
     resetFavBtn.classList.add('hidden');
+    localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
 }
 
 resetFavBtn.addEventListener('click', handleResetFav);
+
+//Escuchamos evento sobre el botón Reset para que lleve todos los valores de la página a inicio
+function handleResetAll(ev) {
+    ev.preventDefault();
+    favAnimes = [];
+    animes = [];
+    renderAnimeInfo();
+    renderFavAnime();
+    userInput.value = '';
+    resetFavBtn.classList.add('hidden');
+    sectionAnimes.classList.remove('animeSection');
+    localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
+}
+
+resetBtn.addEventListener('click', handleResetAll);
 
 //obtengo los datos de LS para saber si tengo almacenado algo, y si hay algo, lo pinto en el html
 const favAnimesLS = localStorage.getItem('favAnimes');
