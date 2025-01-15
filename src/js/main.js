@@ -151,6 +151,7 @@ function renderAnimeInfo() {
         li.setAttribute('class', `js-animes ${css}`);
 
         const article = document.createElement('article');
+        article.setAttribute('class', 'sectionSearchAnimes_article')
         li.appendChild(article);
 
         const image = document.createElement('img');
@@ -158,6 +159,7 @@ function renderAnimeInfo() {
 
         const h3 = document.createElement('h3');
         const titleh3 = document.createTextNode(title);
+        h3.setAttribute('class', 'sectionSearchAnimes_article-title')
         h3.appendChild(titleh3);
         
         article.append(image, h3);

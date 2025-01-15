@@ -8,32 +8,34 @@
       src="https://kit.fontawesome.com/66349fc88a.js"
       crossorigin="anonymous"
     ></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./scss/main.scss" />
     <link rel="icon" href="./images/favicon.png" />
   </head>
 
-  <body>
+  <body class="body">
 
     <load src="./partials/header.html" />
 
-    <input type="text" name="userInput" id="userInput" class="js-userInput">
-    <button class="js-btnSearch">Buscar</button>
-    <button class="js-resetBtn">Reset</button>
+    <input type="text" name="userInput" id="userInput" class="js-userInput userInput">
+    <button class="js-btnSearch btnSearch">Buscar</button>
+    <button class="js-resetBtn btnReset">Reset</button>
 
     <section class="js-sectionAnimes">
 
-      <section>
-        <h2 class="js-titleFavAnimes hidden">Favoritos:</h2>
+      <section class="sectionFavAnimes">
+        <h2 class="js-titleFavAnimes sectionFavAnimes_title hidden">Favoritos:</h2>
         <ul class="js-favAnimeList">
           
         </ul>
-        <button class="js-resetFavBtn hidden">ResetFav</button>
+        <button class="js-resetFavBtn btnFav hidden">ResetFav</button>
       </section>
       
 
-      <section>
-        <h2 class="js-titleAnimes hidden">Resultados búsqueda:</h2>
+      <section class="sectionSearchAnimes">
+        <h2 class="js-titleAnimes sectionSearchAnimes_title hidden">Resultados búsqueda:</h2>
         <ul class="js-animeList">
         
         </ul>

@@ -1,5 +1,5 @@
-// @import 'core/variables';
-// @import 'core/reset';
+@import 'core/variables';
+@import 'core/reset';
 // @import 'components/code';
 // @import 'components/links';
 // @import 'layout/page';
@@ -7,7 +7,89 @@
 // @import 'layout/footer';
 // @import 'pages/index';
 
+.body {
+    margin-top: 30px;
+    margin-left: 50px;
+    font-family: $font-main;
+    background-color: aliceblue;
+}
+
+
+
+.title {
+    font-size: 3.5rem;
+    font-family: $font-main;
+    font-style: italic;
+    margin-bottom: 20px;
+    border: 4px solid lightsalmon;
+    width: fit-content;
+    padding: 10px;
+}
+
+.userInput {
+    font-family: $font-main;
+    border-radius: 5px;
+    border: 2px solid lightcoral;
+    background-color: beige;
+    margin-bottom: 50px;
+    width: 450px;
+}
+
+.btnSearch {
+    font-family: $font-main;
+    border-radius: 10px;
+    width: 95px;
+    height: 25px;
+    font-weight: 700;
+    border: 2px;
+    border-style: inset;
+    
+}
+
+.btnReset {
+    font-family: $font-main;
+    border-radius: 10px;
+    width: 95px;
+    height: 25px;
+    font-weight: 700;
+    border: 2px ;
+    border-style: inset;
+    color: brown;
+}
+
+.btnFav {
+    font-family: $font-main;
+    border-radius: 10px;
+    width: 95px;
+    height: 25px;
+    font-weight: 700;
+}
+
+.sectionSearchAnimes {
+    font-family: $font-main;
+    font-size: 1.5rem;
+
+    &_title {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+    &_article {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        &-title {
+            text-decoration: underline overline black ;
+        }
+    }
+    
+    
+}
+
 li {
+    font-family: $font-main;
     list-style: none;
     margin-bottom: 60px;
     width: fit-content;
