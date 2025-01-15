@@ -7,6 +7,11 @@
 // @import 'layout/footer';
 // @import 'pages/index';
 
-body {
-    background-color: beige;
+li {
+    list-style: none;
+}
+
+.animeSection {
+    display: flex;
+    justify-content: space-evenly;
 }
