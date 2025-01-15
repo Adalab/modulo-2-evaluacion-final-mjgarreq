@@ -4,7 +4,7 @@ const searchBtn = document.querySelector('.js-btnSearch');
 const animeUL = document.querySelector('.js-animeList');
 const favAnimeUL = document.querySelector('.js-favAnimeList');
 const sectionAnimes = document.querySelector('.js-sectionAnimes');
-
+const resetFavBtn = document.querySelector('.js-resetFavBtn');
 
 let animes = [];
 let favAnimes = [];
@@ -25,6 +25,7 @@ function handleFavAnime(ev) {
     if (indexFavAnimeSel === -1) {
         favAnimes.push(animeSelected);
         listItem.setAttribute('class', 'js-animes selected');
+        resetFavBtn.classList.remove('hidden');
     } else {
         favAnimes.splice(indexFavAnimeSel, 1);
         listItem.setAttribute('class', 'js-animes');
@@ -46,15 +47,15 @@ function listenerAnime() {
     }
 }
 
-function handleClickClose(ev) {
-    ev.preventDefault();
+// function handleClickClose(ev) {
+//     ev.preventDefault();
     
-}
+// }
 
-function listenerCloseAnime() {
-    const closeBtn = document.querySelector('.js-close-btn');
-    closeBtn.addEventListener('click', handleClickClose);
-}
+// function listenerCloseAnime() {
+//     const closeBtn = document.querySelector('.js-close-btn');
+//     closeBtn.addEventListener('click', handleClickClose);
+// }
 
 function renderFavAnime () {
     favAnimeUL.innerHTML = '';
@@ -103,7 +104,7 @@ function renderFavAnime () {
         article.append(image, h3);
         li.append(article, closeBtn);
     }
-    listenerCloseAnime();
+    // listenerCloseAnime();
 }
 
 //pintar lista con parámetro de entrada (cada vez podré llamar a una lista distinta si lo necesito)
@@ -173,7 +174,6 @@ function getDataApi(serieName) {
     .then(resp => resp.json())
     .then(info => {
         animes = info.data;
-        console.log(animes)
         renderAnimeInfo();
     })
 }
@@ -187,6 +187,18 @@ function handleClick(ev) {
 
 searchBtn.addEventListener('click', handleClick);
 
+
+function handleResetFav () {
+    console.log(favAnimes)
+    favAnimes = [];
+    sectionAnimes.classList.remove('animeSection');
+    localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
+    renderFavAnime();
+    renderAnimeInfo();
+    resetFavBtn.classList.add('hidden');
+}
+
+resetFavBtn.addEventListener('click', handleResetFav);
 
 //obtengo los datos de LS para saber si tengo almacenado algo, y si hay algo, lo pinto en el html
 const favAnimesLS = localStorage.getItem('favAnimes');
