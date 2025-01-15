@@ -6,6 +6,8 @@ const favAnimeUL = document.querySelector('.js-favAnimeList');
 const sectionAnimes = document.querySelector('.js-sectionAnimes');
 const resetFavBtn = document.querySelector('.js-resetFavBtn');
 const resetBtn = document.querySelector('.js-resetBtn');
+const h2FavAnimes = document.querySelector('.js-titleFavAnimes');
+const h2Animes = document.querySelector('.js-titleAnimes');
 
 let animes = [];
 let favAnimes = [];
@@ -27,6 +29,7 @@ function handleFavAnime(ev) {
         favAnimes.push(animeSelected);
         listItem.setAttribute('class', 'js-animes selected');
         resetFavBtn.classList.remove('hidden');
+        h2FavAnimes.classList.remove('hidden');
     } else {
         favAnimes.splice(indexFavAnimeSel, 1);
         listItem.setAttribute('class', 'js-animes');
@@ -81,7 +84,8 @@ function renderFavAnime () {
         }
 
         sectionAnimes.classList.add('animeSection');
-    
+        
+        
         const li = document.createElement('li');
         favAnimeUL.appendChild(li);
         li.setAttribute('id', anime.mal_id);
@@ -139,7 +143,7 @@ function renderAnimeInfo() {
         if (findAnimeFav) {
             css = 'selected';
         }
-            
+        
 
         const li = document.createElement('li');
         animeUL.appendChild(li);
@@ -157,7 +161,8 @@ function renderAnimeInfo() {
         h3.appendChild(titleh3);
         
         article.append(image, h3);
-    
+        
+        
 
         // UL.innerHTML += `<li id=${anime.mal_id} class="js-animes">
         //   <article class="${css}">
@@ -186,6 +191,7 @@ function handleClick(ev) {
     ev.preventDefault();
     //almacenar lo que escribe la usuaria
     const userSearch = userInput.value;
+    h2Animes.classList.remove('hidden');
     getDataApi(userSearch);
 }
 
@@ -199,6 +205,7 @@ function handleResetFav (ev) {
     renderFavAnime();
     renderAnimeInfo();
     resetFavBtn.classList.add('hidden');
+    h2FavAnimes.classList.add('hidden');
     localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
 }
 
@@ -214,6 +221,8 @@ function handleResetAll(ev) {
     userInput.value = '';
     resetFavBtn.classList.add('hidden');
     sectionAnimes.classList.remove('animeSection');
+    h2Animes.classList.add('hidden');
+    h2FavAnimes.classList.add('hidden');
     localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
 }
 
@@ -223,5 +232,9 @@ resetBtn.addEventListener('click', handleResetAll);
 const favAnimesLS = localStorage.getItem('favAnimes');
 if (favAnimesLS) {
     favAnimes = JSON.parse(favAnimesLS);
+    resetFavBtn.classList.remove('hidden');
+    if (favAnimes.length <= 0){
+        resetFavBtn.classList.add('hidden');
+    }
     renderFavAnime();
 }
