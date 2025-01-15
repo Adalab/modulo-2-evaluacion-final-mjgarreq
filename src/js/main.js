@@ -19,7 +19,7 @@ let favAnimes = [];
 
 function handleFavAnime(ev) {
     //almaceno el id del li que está clicando
-    const liClickedId = parseInt(ev.currentTarget.id);
+    const liClickedId = parseInt(ev.currentTarget.id); //lo convierto a número porque me devuelve un string
     
     //busco el anime a paritr del id con el método find
     const animeSelected = animes.find((oneAnime) => oneAnime.mal_id === liClickedId);
@@ -79,13 +79,31 @@ function renderAnimeInfo(arrList, UL) {
             css = '';
         }
 
+        const li = document.createElement('li');
+        UL.appendChild(li);
+        li.setAttribute('id', anime.mal_id);
+        li.setAttribute('class', `js-animes`);
 
-        UL.innerHTML += `<li id=${anime.mal_id} class="js-animes ${css}">
-          <article>
-            <img src="${img}" alt="">
-            <h3>${title}</h3>
-          </article>
-        </li>`;
+        const article = document.createElement('article');
+        article.setAttribute('class', `${css}`);
+        li.appendChild(article);
+
+        const image = document.createElement('img');
+        image.src = img;
+
+        const h3 = document.createElement('h3');
+        const titleh3 = document.createTextNode(title);
+        h3.appendChild(titleh3);
+
+        article.append(image, h3);
+
+
+        // UL.innerHTML += `<li id=${anime.mal_id} class="js-animes">
+        //   <article class="${css}">
+        //     <img src="${img}" alt="">
+        //     <h3>${title}</h3>
+        //   </article>
+        // </li>`;
     }
     listenerAnime();
 }
