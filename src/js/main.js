@@ -29,6 +29,9 @@ function handleFavAnime(ev) {
     } else {
         favAnimes.splice(indexFavAnimeSel, 1);
         listItem.setAttribute('class', 'js-animes');
+        if (favAnimes.length <= 0) {
+            resetFavBtn.classList.add('hidden');
+        }
     }
 
     //usamos la función localStorage para que el servidor guarde el array de favAnimes
