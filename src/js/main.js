@@ -12,85 +12,33 @@ const h2Animes = document.querySelector('.js-titleAnimes');
 let animes = [];
 let favAnimes = [];
 
-
-function handleFavAnime(ev) {
-    //almaceno el id del li que está clicando
-    const liClickedId = parseInt(ev.currentTarget.id); //lo convierto a número porque me devuelve un string
-    
-    //busco el anime a partir del id con el método find
-    const animeSelected = animes.find((oneAnime) => oneAnime.mal_id === liClickedId);
-    
-
-    //comprobamos que el animeSelected no está guarado en el array de favAnimes mediante el método findIndex, que nos devuelve su posición (sabemos que si no está en el array, nos devuelve -1)
-    const indexFavAnimeSel = favAnimes.findIndex(animeClicked => animeClicked.mal_id === liClickedId);
-    let listItem = ev.currentTarget;
-
-    if (indexFavAnimeSel === -1) {
-        favAnimes.push(animeSelected);
-        listItem.setAttribute('class', 'js-animes selected');
-        resetFavBtn.classList.remove('hidden');
-        h2FavAnimes.classList.remove('hidden');
-    } else {
-        favAnimes.splice(indexFavAnimeSel, 1);
-        listItem.setAttribute('class', 'js-animes');
-        h2FavAnimes.classList.add('hidden');
-        animeUL.classList.remove('searchAnimeList');
-        if (favAnimes.length <= 0) {
-            resetFavBtn.classList.add('hidden');
-        }
-    }
-
-    //usamos la función localStorage para que el servidor guarde el array de favAnimes
-    localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
-
-    renderFavAnime();
-}
-
-
-function listenerAnime() {
-    //almaceno en una constante todos los li que hay
-    const allAnimeList = document.querySelectorAll('.js-animes');
-    for (const li of allAnimeList) {
-        //escucho un evento sobre cada li
-        li.addEventListener('click', handleFavAnime)
-    }
-}
-
+//desmarco de favoritos
 function handleClickClose(ev) {
     ev.preventDefault();
     
     //almaceno el id del btn que está clicando
     const btnClickedId = parseInt(ev.currentTarget.id); 
-    
 
+    //almaceno el indice del anime que está clicando
     const indexFavAnimeBtn = favAnimes.findIndex(animeClicked => animeClicked.mal_id === btnClickedId);
-
-
-
     
     favAnimes.splice(indexFavAnimeBtn, 1);
-        if (favAnimes.length <= 0) {
-            resetFavBtn.classList.add('hidden');
-            h2FavAnimes.classList.add('hidden');
-            animeUL.classList.remove('searchAnimeList');
-        }
+    if (favAnimes.length <= 0) {
+        resetFavBtn.classList.add('hidden');
+        h2FavAnimes.classList.add('hidden');
+        animeUL.classList.remove('searchAnimeList');
+    }
 
-
-    // localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
-    
     renderFavAnime();
     renderAnimeInfo();
-    console.log(btnClickedId)
-    console.log(favAnimes)
-    console.log(indexFavAnimeBtn)
 }
 
+//escucho sobre el array de botones "X"
 function listenerCloseAnime() {
     const closeBtn = document.querySelectorAll('.js-close-btn');
     for (const oneBtn of closeBtn) {
         oneBtn.addEventListener('click', handleClickClose);
     }
-    
 }
 
 function renderFavAnime () {
@@ -141,12 +89,53 @@ function renderFavAnime () {
         i.setAttribute('class', 'fa-solid fa-xmark')
         closeBtn.appendChild(i);
 
-        
         article.append(image, h3);
         li.append(article, closeBtn);
-    
     }
     listenerCloseAnime();
+}
+
+//hago la función para que se almacenen en la lista de favoritos
+function handleFavAnime(ev) {
+    //almaceno el id del li que está clicando
+    const liClickedId = parseInt(ev.currentTarget.id); //lo convierto a número porque me devuelve un string
+    
+    //busco el anime a partir del id con el método find
+    const animeSelected = animes.find((oneAnime) => oneAnime.mal_id === liClickedId);
+    
+    //comprobamos que el animeSelected no está guarado en el array de favAnimes mediante el método findIndex, que nos devuelve su posición (sabemos que si no está en el array, nos devuelve -1)
+    const indexFavAnimeSel = favAnimes.findIndex(animeClicked => animeClicked.mal_id === liClickedId);
+    let listItem = ev.currentTarget;
+
+    if (indexFavAnimeSel === -1) {
+        favAnimes.push(animeSelected);
+        listItem.setAttribute('class', 'js-animes selected');
+        resetFavBtn.classList.remove('hidden');
+        h2FavAnimes.classList.remove('hidden');
+    } else {
+        favAnimes.splice(indexFavAnimeSel, 1);
+        listItem.setAttribute('class', 'js-animes');
+        h2FavAnimes.classList.add('hidden');
+        animeUL.classList.remove('searchAnimeList');
+        if (favAnimes.length <= 0) {
+            resetFavBtn.classList.add('hidden');
+        }
+    }
+
+    //usamos la función localStorage para que el servidor guarde el array de favAnimes
+    localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
+
+    renderFavAnime();
+}
+
+//escucho sobre la lista de animes
+function listenerAnime() {
+    //almaceno en una constante todos los li que hay
+    const allAnimeList = document.querySelectorAll('.js-animes');
+    for (const li of allAnimeList) {
+        //escucho un evento sobre cada li
+        li.addEventListener('click', handleFavAnime)
+    }
 }
 
 //pintar lista con parámetro de entrada (cada vez podré llamar a una lista distinta si lo necesito)
@@ -178,7 +167,6 @@ function renderAnimeInfo() {
             css = 'selected';
         }
         
-
         const li = document.createElement('li');
         animeUL.appendChild(li);
         li.setAttribute('id', anime.mal_id);
@@ -198,18 +186,6 @@ function renderAnimeInfo() {
         h3.appendChild(titleh3);
         
         article.append(image, h3);
-        
-        
-
-        // UL.innerHTML += `<li id=${anime.mal_id} class="js-animes">
-        //   <article class="${css}">
-        //     <img src="${img}" alt="">
-        //     <h3>${title}</h3>
-        //   </article>
-        //   <button class="js_close-btn ${display}">
-        //       <i class="fa-solid fa-xmark"></i>
-        //   </button>
-        // </li>`;
     }
     listenerAnime();
 }
@@ -224,6 +200,7 @@ function getDataApi(serieName) {
     })
 }
 
+//Escuchamos evento sobre el botón "Buscar"
 function handleClick(ev) {
     ev.preventDefault();
     //almacenar lo que escribe la usuaria
@@ -273,11 +250,11 @@ if (favAnimesLS) {
     favAnimes = JSON.parse(favAnimesLS);
     resetFavBtn.classList.remove('hidden');
     h2FavAnimes.classList.remove('hidden');
+    
     if (favAnimes.length <= 0){
         resetFavBtn.classList.add('hidden');
         h2FavAnimes.classList.add('hidden');
     }
-    
     renderFavAnime();
     animeUL.classList.remove('searchAnimeList');
 }
