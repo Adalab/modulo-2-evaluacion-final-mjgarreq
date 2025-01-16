@@ -156,11 +156,13 @@ ul {
 .imgSrchAnime {
     width: 225px;
     height: 338px;
+    object-fit: contain;
 }
 
 .imgFavAnime {
     width: 150px;
     box-shadow: 1px 1px 4px 2px rgba(32,32,32,0.3);
+    object-fit: contain;
 }
 
 .selected {

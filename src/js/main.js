@@ -243,6 +243,7 @@ function handleResetFav (ev) {
     renderAnimeInfo();
     resetFavBtn.classList.add('hidden');
     h2FavAnimes.classList.add('hidden');
+    animeUL.classList.remove('searchAnimeList');
     localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
 }
 

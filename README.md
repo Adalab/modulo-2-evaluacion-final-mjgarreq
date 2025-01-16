@@ -34,7 +34,7 @@ Al hacer click sobre el botón "Reset", la página vuelve a su estado inical (bo
 
 3. Afinar maquetación
 
-Hemos añadido un display grid a la lista de "Resultados de búsqueda" para que, cuando aparezca la lista de "Favoritos", las series de búsqueda se vean en 1, 2 o 3 columnas (dependiendo del tamaño de la pantalla), y aparece el bloque de las series con un borde de un color distinto.
+Hemos añadido un display grid a la lista de "Resultados de búsqueda" para que, cuando aparezca la lista de "Favoritos", las series de búsqueda se vean en distintas columnas (dependiendo del tamaño de la pantalla), y aparece el bloque de las series con un borde de un color distinto.
 
 Con respecto a la lista de "Favoritos" hemos reducido el tamaño de la imagen, y aparece con un sombreado.
 
