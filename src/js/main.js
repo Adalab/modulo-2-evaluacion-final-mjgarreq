@@ -118,7 +118,7 @@ function renderFavAnime () {
         const li = document.createElement('li');
         favAnimeUL.appendChild(li);
         li.setAttribute('id', anime.mal_id);
-        li.setAttribute('class', `js-animes`);
+        li.setAttribute('class', `js-favAnimes`);
 
         const article = document.createElement('article');
         article.setAttribute('class', 'sectionFavAnimes_article')

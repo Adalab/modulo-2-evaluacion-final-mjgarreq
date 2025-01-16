@@ -22,6 +22,8 @@ El listado de series favoritas se almacena en el LocalStorage, por lo que si se 
 
 1. Borrar de favoritos
 
+   - Al hacer click sobre el botón con una "X" de la lista de "Favoritos", desaparece ese anime de favoritos y también se le quita el borde en la lista de "Resultados búsqueda".
+
    - Al hacer click sobre la serie favorita en el listado de la derecha (donde aparece con un borde), la serie se desmarca y desaparece del listado de la izquierda de "Favoritos".
 
    - Al hacer click sobre el botón del final del listado de "Favoritos", se borra toda la lista de series que estén almacenadas ahí (también se limpian del LocalStorage).
