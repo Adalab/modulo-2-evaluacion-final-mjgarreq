@@ -143,6 +143,14 @@ ul {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
     }
+    @media (min-width: 1300px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 50px;
+    }
+    @media (min-width: 1600px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 50px;
+    }
 }
 
 .imgSrchAnime {
