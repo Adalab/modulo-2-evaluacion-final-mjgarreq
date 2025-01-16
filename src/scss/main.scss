@@ -1,12 +1,6 @@
 @import 'core/variables';
 @import 'core/reset';
 @import 'core/mixins';
-// @import 'components/code';
-// @import 'components/links';
-// @import 'layout/page';
-// @import 'layout/header';
-// @import 'layout/footer';
-// @import 'pages/index';
 
 .body {
     margin-top: 30px;
@@ -14,8 +8,6 @@
     font-family: $font-main;
     background-color: aliceblue;
 }
-
-
 
 .title {
     font-size: 3.5rem;
@@ -104,8 +96,6 @@
         margin-bottom: 10px;
         max-width: 150px;
     }
-
-    
 }
 
 li {
@@ -113,7 +103,6 @@ li {
     list-style: none;
     margin-bottom: 60px;
     width: fit-content;
-    
 }
 
 
@@ -139,14 +128,17 @@ ul {
     @media (min-width: 768px) {
         grid-template-columns: 1fr 1fr;
     }
+
     @media (min-width: 980px) {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
     }
+
     @media (min-width: 1300px) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 50px;
     }
+    
     @media (min-width: 1600px) {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 50px;
