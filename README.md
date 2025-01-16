@@ -1,125 +1,64 @@
-![Adalab](https://beta.adalab.es/resources/images/adalab-logo-155x61-bg-white.png)
+# Módulo 2: Ejercicio de evaluación final
 
-# Adalab web starter kit
+Este es el ejercicio de evaluación final del **módulo 2**. En esta ocasión se ha realizado el ejercicio mediante el framework de Vite (he realizado previamente la instalación del Adalab Web Starter Kit).
 
-Ahoy! Este es nuestro Starter Kit creado en **node y vite**. ¿Y qué es un Starter kit? Pues es una **plantilla de proyecto con funcionalidades preinstaladas y preconfiguradas**.
+El objetivo de este ejercicio era desarrollar una aplicación web de búsqueda de series de anime y en la cual pidéramos marcar o desmarcar las series como favoritas y guardarlas en el Local Storage.
 
-Este Kit incluye un motor de plantillas HTML, el preprocesador SASS y un servidor local y muchas cosas más. El Kit nos ayuda a trabajar más cómodamente, nos automatiza tareas.
+## EJERCICIOS
 
-En el Kit hay 3 tipos de ficheros y carpetas:
+1. Estructura
+Nos encontramos con una estructura básica ya que, al abrir la página, vemos un título, un campo de búsqueda y dos botones (Buscar y Reset).
 
-- Los ficheros que están sueltos en la raíz del repositorio, como vite.config.js, package.json... Son la configuración del proyecto y no necesitamos modificarlos (excepto este README.md, para describir tu proyecto).
-- La carpeta `src/`: son los ficheros de nuestra página web, como HTML, CSS, JS...
-- La carpeta `public/`, que tiene fichero estáticos como imágenes, fuentes, favicon, librerías de JavaScript antiguas (jQuery, ...)
-- Y la carpeta `docs/`, que es generada automáticamente cuando arrancamos el proyecto. El Kit lee los ficheros que hay dentro de `src/` y `public/`, los procesa y los genera dentro de `public/` y `docs/`.
+2. Búsqueda
+La usuaria debe introducir el nombre de un anime y, al hacer click en el botón "Buscar", mediante una petición a la API `https://docs.api.jikan.moe/`, se pinta en el html todas las series sobre ese anime (vemos la imagen y el título de cada una).
 
-## Guía de inicio rápido
+3. Favoritos
+Una vez tenemos la lista de búsqueda, la usuaria puede hacer click sobre las series que más le interen, y, al hacer click, aparece un listado a la izquierda con las series favoritas marcadas, mientras que en el listado de la derecha se remarca la serie favorita con un borde. El listado de series favoritas se mantiene estático aunque la usuaria busque otro anime.
 
-> **NOTA:** Necesitas tener instalado [Node JS](https://nodejs.org/) con una versión superior a la 14 para trabajar con este Starter Kit:
+4. Almacenamiento
+El listado de series favoritas se almacena en el LocalStorage, por lo que si se recarga la página sigue apareciendo en pantalla.
 
-### Pasos a seguir cada vez que queremos arrancar un proyecto desde cero:
+## BONUS
 
-1. **Crea tu propio repositorio.**
-1. Descarga este **Starter kit desde GitHub**.
-   - No recomendamos que clones este repo ya que no podrás añadir commits.
-1. **Copia todos los ficheros** de este Starter kit en la carpeta raíz de tu repositorio.
-   - Recuerda que debes copiar **también los ficheros ocultos** que comienzan por un punto.
-   - Si has decidido clonar este repo, no debes copiar la carpeta `.git`. Si lo haces estarás machacando tu propio repositorio.
-1. **Abre una terminal** en la carpeta raíz de tu repositorio.
-1. **Instala las dependencias** locales ejecutando en la terminal el comando:
+1. Borrar de favoritos
 
-```bash
+   - Al hacer click sobre la serie favorita en el listado de la derecha (donde aparece con un borde), la serie se desmarca y desaparece del listado de la izquierda de "Favoritos".
+
+   - Al hacer click sobre el botón del final del listado de "Favoritos", se borra toda la lista de series que estén almacenadas ahí (también se limpian del LocalStorage).
+
+2. Botón reset
+
+Al hacer click sobre el botón "Reset", la página vuelve a su estado inical (borra la lista de "Favoritos" (también del Local Storage), borra la lista de "Resultados búsqueda" y borra el valor que hubiera en el campo de búsqueda).
+
+3. Afinar maquetación
+
+Hemos añadido un display grid a la lista de "Resultados de búsqueda" para que, cuando aparezca la lista de "Favoritos", las series de búsqueda se vean en 1, 2 o 3 columnas (dependiendo del tamaño de la pantalla), y aparece el bloque de las series con un borde de un color distinto.
+
+Con respecto a la lista de "Favoritos" hemos reducido el tamaño de la imagen, y aparece con un sombreado.
+
+
+### Guía de inicio rápido
+
+Para poder arrancar el proyecto necesitas seguir los siguientes pasos:
+
+1. Instalar las dependencias ejecutando el siguiente comando:
+
+```
 npm install
 ```
-
-### Pasos para arrancar el proyecto:
-
-Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando:
-
-```bash
+2. Para visualizar el proyecto, ejecutar alguno de los siguientes comandos: 
+```
+npm start
+``` 
+o 
+```
 npm run dev
 ```
 
-Este comando:
+### Guía para publicar el proyecto en GitHub Pages:
 
-- **Abre una ventana de Chrome y muestra tu página web**, al igual que hace el plugin de VS Code Live Server (Go live).
-- También **observa** todos los ficheros que hay dentro de la carpeta `src/`, para que cada vez que modifiques un fichero **refresca tu página en Chrome**.
-- También **procesa los ficheros** HTML, SASS / CSS y JS. Por ejemplo:
-   - Convierte los ficheros SASS en CSS.
-   - Combina los diferentes ficheros de HTML y los agrupa en uno o varios ficheros HTML.
+Para poder generar la versión de producción usaremos un atajo mediante el comando `npm run deploy`, que convierte nuestros archivos scss en archivos legibles para el navegador, y se guardan en la carpeta docs (donde tenemos la versión de producción), además de hacerse el push automático.
 
-Después de ejecutar `npm run dev` ya puedes empezar a editar todos los ficheros que están dentro de la carpeta `src/` y programar cómodamente.
 
-### Pasos para publicar el proyecto en GitHub Pages:
-
-Para generar tu página para producción ejecuta el comando:
-
-```bash
-npm run build
-```
-
-Y a continuación:
-
-1. Sube a tu repo la carpeta `docs/` que se te acaba de generar.
-1. Entra en la pestaña `settings` de tu repo.
-1. Y en el apartado de GitHub Pages activa la opción **master branch /docs folder**.
-1. Y ya estaría!!!
-
-Además, los comandos:
-
-```bash
-npm run push-docs
-```
-o
-
-```bash
-npm run deploy
-```
-
-son un atajo que nos genera la versión de producción y hace push de la carpeta `docs/` del tirón. Te recomendamos ver el fichero `package.json` para aprender cómo funciona.
-<!--
-## Flujo de archivos con Gulp
-
-Estas tareas de Gulp producen el siguiente flujo de archivos:
-
-![Gulp flow](./gulp-flow.png)
-
-## `gulpfile.js` y `config.json`
-
-Nuestro **gulpfile.js** usa el fichero `config.json` de configuración con las rutas de los archivos a generar / observar.
-
-De esta manera separarmos las acciones que están en `gulpfile.js` de la configuración de las acciones que están en `config.json`.
--->
-## Estructura de carpetas
-
-La estructura de carpetas tiene esta pinta:
-
-```
-src
- ├─ api // los ficheros de esta carpeta se copian en public/api/
- |  └─ data.json
- ├─ images
- |  └─ logo.jpg
- ├─ js // los ficheros de esta carpeta se concatenan en el fichero main.js y este se guarda en public/main.js
- |  ├─ main.js
- |  └─ events.js
- ├─ scss
- |  ├─ components
- |  ├─ core
- |  ├─ layout
- |  └─ pages
- └─ html
-    └─ partials
-```
-
-> **NOTA:** Los partials de HTML y SASS del proyecto son orientativos. Te recomendamos usar los que quieras, y borrar los que no uses.
-<!--
-## Vídeotutoriales del Starter kit
-
-- [Qué es, trabajar con la versión de desarrollo y rutas relativas](https://www.youtube.com/watch?v=XwvhXvBijos)
-- [Migración de un proyecto, trabajar con la versión de producción y GitHub Pages](https://www.youtube.com/watch?v=qqGClcgt9Uc)
-- [Motor de plantillas](https://www.youtube.com/watch?v=4GwXOJ045Zg)
--->
-## Falta algo?
-
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de las issues o si te animas a mejorarlo mándanos un PR :)
+#### AUTORA
+MªJosé García Requena

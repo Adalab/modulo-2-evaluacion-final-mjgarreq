@@ -56,15 +56,42 @@ function listenerAnime() {
     }
 }
 
-// function handleClickClose(ev) {
-//     ev.preventDefault();
+function handleClickClose(ev) {
+    ev.preventDefault();
     
-// }
+    //almaceno el id del btn que está clicando
+    const btnClickedId = parseInt(ev.currentTarget.id); 
+    
 
-// function listenerCloseAnime() {
-//     const closeBtn = document.querySelector('.js-close-btn');
-//     closeBtn.addEventListener('click', handleClickClose);
-// }
+    const indexFavAnimeBtn = favAnimes.findIndex(animeClicked => animeClicked.mal_id === btnClickedId);
+
+
+
+    
+    favAnimes.splice(indexFavAnimeBtn, 1);
+        if (favAnimes.length <= 0) {
+            resetFavBtn.classList.add('hidden');
+            h2FavAnimes.classList.add('hidden');
+            animeUL.classList.remove('searchAnimeList');
+        }
+
+
+    // localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
+    
+    renderFavAnime();
+    renderAnimeInfo();
+    console.log(btnClickedId)
+    console.log(favAnimes)
+    console.log(indexFavAnimeBtn)
+}
+
+function listenerCloseAnime() {
+    const closeBtn = document.querySelectorAll('.js-close-btn');
+    for (const oneBtn of closeBtn) {
+        oneBtn.addEventListener('click', handleClickClose);
+    }
+    
+}
 
 function renderFavAnime () {
     favAnimeUL.innerHTML = '';
@@ -108,6 +135,7 @@ function renderFavAnime () {
 
         const closeBtn = document.createElement('button');
         closeBtn.setAttribute('class',`js-close-btn`);
+        closeBtn.setAttribute('id', anime.mal_id);
 
         const i = document.createElement('i');
         i.setAttribute('class', 'fa-solid fa-xmark')
@@ -116,8 +144,9 @@ function renderFavAnime () {
         
         article.append(image, h3);
         li.append(article, closeBtn);
+    
     }
-    // listenerCloseAnime();
+    listenerCloseAnime();
 }
 
 //pintar lista con parámetro de entrada (cada vez podré llamar a una lista distinta si lo necesito)
@@ -245,6 +274,7 @@ if (favAnimesLS) {
     h2FavAnimes.classList.remove('hidden');
     if (favAnimes.length <= 0){
         resetFavBtn.classList.add('hidden');
+        h2FavAnimes.classList.add('hidden');
     }
     
     renderFavAnime();
