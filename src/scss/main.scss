@@ -76,7 +76,8 @@
         max-width: 225px;
 
         &-title {
-            text-decoration: underline overline black ;
+            text-decoration: underline wavy black ;
+            line-height: 2;
         }
     }
     
@@ -155,7 +156,7 @@ ul {
 }
 
 .selected {
-    border: 3px solid rgb(149, 197, 149);
+    border: 5px dashed rgb(149, 197, 149);
     padding: 2px;
     color: rgb(117, 195, 222);
 }
