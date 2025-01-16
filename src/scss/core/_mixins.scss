@@ -1,0 +1,9 @@
+@mixin btn-properties (){
+    font-family: $font-main;
+    border-radius: 10px;
+    width: 95px;
+    height: 25px;
+    font-weight: 700;
+    border: 2px;
+    border-style: inset;
+}

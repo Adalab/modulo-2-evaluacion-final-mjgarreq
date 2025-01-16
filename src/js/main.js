@@ -33,6 +33,8 @@ function handleFavAnime(ev) {
     } else {
         favAnimes.splice(indexFavAnimeSel, 1);
         listItem.setAttribute('class', 'js-animes');
+        h2FavAnimes.classList.add('hidden');
+        animeUL.classList.remove('searchAnimeList');
         if (favAnimes.length <= 0) {
             resetFavBtn.classList.add('hidden');
         }
@@ -84,7 +86,7 @@ function renderFavAnime () {
         }
 
         sectionAnimes.classList.add('animeSection');
-        
+        animeUL.classList.add('searchAnimeList');
         
         const li = document.createElement('li');
         favAnimeUL.appendChild(li);
@@ -92,13 +94,16 @@ function renderFavAnime () {
         li.setAttribute('class', `js-animes`);
 
         const article = document.createElement('article');
+        article.setAttribute('class', 'sectionFavAnimes_article')
         
 
         const image = document.createElement('img');
         image.src = img;
+        image.setAttribute('class', 'imgFavAnime')
 
         const h3 = document.createElement('h3');
         const titleh3 = document.createTextNode(title);
+        h3.setAttribute('class', 'sectionFavAnimes_article-title')
         h3.appendChild(titleh3);
 
         const closeBtn = document.createElement('button');
@@ -156,6 +161,7 @@ function renderAnimeInfo() {
 
         const image = document.createElement('img');
         image.src = img;
+        image.setAttribute('class', 'imgSrchAnime')
 
         const h3 = document.createElement('h3');
         const titleh3 = document.createTextNode(title);
@@ -225,6 +231,7 @@ function handleResetAll(ev) {
     sectionAnimes.classList.remove('animeSection');
     h2Animes.classList.add('hidden');
     h2FavAnimes.classList.add('hidden');
+    animeUL.classList.remove('searchAnimeList');
     localStorage.setItem('favAnimes', JSON.stringify(favAnimes));
 }
 
@@ -235,8 +242,11 @@ const favAnimesLS = localStorage.getItem('favAnimes');
 if (favAnimesLS) {
     favAnimes = JSON.parse(favAnimesLS);
     resetFavBtn.classList.remove('hidden');
+    h2FavAnimes.classList.remove('hidden');
     if (favAnimes.length <= 0){
         resetFavBtn.classList.add('hidden');
     }
+    
     renderFavAnime();
+    animeUL.classList.remove('searchAnimeList');
 }
