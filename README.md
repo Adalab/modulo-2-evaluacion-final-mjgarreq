@@ -7,15 +7,19 @@ El objetivo de este ejercicio era desarrollar una aplicación web de búsqueda d
 ## EJERCICIOS
 
 1. Estructura
+
 Nos encontramos con una estructura básica ya que, al abrir la página, vemos un título, un campo de búsqueda y dos botones (Buscar y Reset).
 
 2. Búsqueda
+
 La usuaria debe introducir el nombre de un anime y, al hacer click en el botón "Buscar", mediante una petición a la API `https://docs.api.jikan.moe/`, se pinta en el html todas las series sobre ese anime (vemos la imagen y el título de cada una).
 
 3. Favoritos
+
 Una vez tenemos la lista de búsqueda, la usuaria puede hacer click sobre las series que más le interen, y, al hacer click, aparece un listado a la izquierda con las series favoritas marcadas, mientras que en el listado de la derecha se remarca la serie favorita con un borde. El listado de series favoritas se mantiene estático aunque la usuaria busque otro anime.
 
 4. Almacenamiento
+
 El listado de series favoritas se almacena en el LocalStorage, por lo que si se recarga la página sigue apareciendo en pantalla.
 
 ## BONUS

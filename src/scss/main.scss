@@ -161,6 +161,11 @@ ul {
     border: 5px dashed rgb(149, 197, 149);
     padding: 2px;
     color: rgb(117, 195, 222);
+    & h3 {
+        background-color: rgb(142, 131, 96);
+        text-decoration: underline wavy rgb(117, 195, 222);
+        width: fit-content;
+    }
 }
 
 .hidden {
